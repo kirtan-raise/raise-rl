@@ -1,0 +1,32 @@
+<mujoco>
+    <default>
+        <default class="position">
+          <position group="0" gear="1" ctrlrange="-6.28319 6.28319" ctrllimited="true"/>
+        </default>
+
+        <default class="velocity">
+          <velocity group="1" gear="1" ctrllimited="true"/>
+        </default>
+    </default>
+
+    <actuator>
+        <position class="position" joint="left_shoulder_pan_joint" name="pan_p" kp="6e12"/>
+        <velocity class="velocity" joint= "left_shoulder_pan_joint" name="pan_d" ctrlrange="-2.0943951023931953 2.0943951023931953" kv="46e6"/>
+
+        <position class="position" joint="left_shoulder_lift_joint" name ="lift_p" kp="4e6"/>
+        <velocity class="velocity" joint="left_shoulder_lift_joint" name ="lift_d" ctrlrange="-2.0943951023931953 2.0943951023931953" kv="4e3"/>
+
+        <position class="position" joint="left_elbow_joint" name="elbow_p" ctrlrange="-3.14159 3.14159" kp="400" />
+        <velocity class="velocity" joint="left_elbow_joint" name="elbow_d" ctrlrange="-2.6179938779914944 2.6179938779914944" kv="40"/>
+
+        <position class="position" joint="left_wrist_1_joint" name="wrist1_p" kp="800"/>
+        <velocity class="velocity" joint="left_wrist_1_joint" name="wrist1_d" ctrlrange="-3.6651914291880923 3.6651914291880923" kv="80"/>
+
+        <position class="position" joint="left_wrist_2_joint" name="wrist2_p" kp="400"/>
+        <velocity class="velocity" joint="left_wrist_2_joint" name="wrist2_d" ctrlrange="-3.6651914291880923 3.6651914291880923" kv="40"/>
+
+        <position class="position" joint="left_wrist_3_joint" name="wrist3_p" kp="400"/>
+        <velocity class="velocity" joint="left_wrist_3_joint" name="wrist3_d" ctrlrange="-3.6651914291880923 3.6651914291880923" kv="40"/>
+
+    </actuator>
+</mujoco>

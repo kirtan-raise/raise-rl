@@ -1,0 +1,63 @@
+<mujoco model="metalman">
+    <compiler angle="radian" meshdir="meshes/" />
+    <size njmax="500" nconmax="100" />
+    <asset>
+        <mesh name="base" file="ur20/collision/base.stl" scale="1.3 1.3 1.3" />
+        <mesh name="shoulder" file="ur20/collision/shoulder.stl" scale="1.3 1.3 1.3" />
+        <mesh name="upperarm" file="ur20/collision/upperarm.stl" scale="1.3 1.3 1" />
+        <mesh name="forearm" file="ur20/collision/forearm.stl" scale="1.3 1.3 1" />
+        <mesh name="wrist1" file="ur20/collision/wrist1.stl" scale="1.3 1.3 1.3" />
+        <mesh name="wrist2" file="ur20/collision/wrist2.stl" scale="1.3 1.3 1.3" />
+        <mesh name="wrist3" file="ur20/collision/wrist3.stl" scale="1.3 1.3 1.3" />
+        <mesh name="extender" file="rest/collision/extender.stl" />
+        <mesh name="rotary" file="rest/collision/rotary.stl" />
+        <mesh name="bracket_gripper" file="rest/collision/bracket_gripper.stl" />
+        <mesh name="harmon_bracket" file="rest/collision/harmon_bracket.stl" />
+        <mesh name="bolt" file="rest/collision/bolt.stl" />
+        <mesh name="channel_and_concrete_block" file="rest/collision/channel_and_concrete_block.stl" />
+    </asset>
+    <worldbody>
+        <geom pos="-0.3 0 1.27" quat="-0.5 0.5 -0.5 -0.5" type="mesh" rgba="0.7 0.7 0.7 1" mesh="base" />
+        <geom pos="0 0 -0.15" type="mesh" mesh="channel_and_concrete_block" />
+        <body name="left_shoulder_link" pos="-0.3 0.2363 1.27" quat="-0.5 0.5 0.5 0.5">
+            <inertial pos="0 0 0" mass="16.343" diaginertia="0.0661333 0.0661333 0.0459647" />
+            <joint name="left_shoulder_pan_joint" pos="0 0 0" axis="0 0 1" limited="true" range="-6.28319 6.28319" />
+            <geom quat="0 0 0 1" type="mesh" rgba="0.7 0.7 0.7 1" mesh="shoulder" />
+            <body name="left_upper_arm_link" pos="0 0 0" quat="0.707107 0.707107 0 0">
+                <inertial pos="-0.426 0.0109592 0.275" quat="0 0.707107 0 0.707107" mass="32.9109" diaginertia="2.06924 2.03352 0.12107" />
+                <joint name="left_shoulder_lift_joint" pos="0 0 0" axis="0 0 1" limited="true" range="-6.28319 6.28319" />
+                <geom pos="0 0 0.26" quat="0.5 0.5 -0.5 -0.5" type="mesh" rgba="0.7 0.7 0.7 1" mesh="upperarm" />
+                <geom size="0.035 0.426" pos="-0.426 0.11 0.275" quat="0 0.707107 0 0.707107" type="cylinder" rgba="0.2 0.2 0.2 1" />
+                <body name="left_forearm_link" pos="-0.862 0 0">
+                    <inertial pos="-0.36435 0.0288748 0.043" quat="0 0.707107 0 0.707107" mass="10.6834" diaginertia="0.509706 0.484681 0.0489029" />
+                    <joint name="left_elbow_joint" pos="0 0 0" axis="0 0 1" limited="true" range="-3.14159 3.14159" />
+                    <geom pos="0 0 0.043" quat="0.5 0.5 -0.5 -0.5" type="mesh" rgba="0.7 0.7 0.7 1" mesh="forearm" />
+                    <geom size="0.035 0.36435" pos="-0.36435 0.11 0.043" quat="0 0.707107 0 0.707107" type="cylinder" rgba="0.2 0.2 0.2 1" />
+                    <body name="left_wrist_1_link" pos="-0.7287 0 0.201">
+                        <inertial pos="0 0 0" quat="0.5 0.5 -0.5 0.5" mass="3.054" diaginertia="0.00858937 0.00795948 0.00795948" />
+                        <joint name="left_wrist_1_joint" pos="0 0 0" axis="0 0 1" limited="true" range="-6.28319 6.28319" />
+                        <geom pos="0 0 -0.0775" quat="0.707107 0.707107 0 0" type="mesh" rgba="0.7 0.7 0.7 1" mesh="wrist1" />
+                        <body name="left_wrist_2_link" pos="0 -0.1593 -3.2673e-11" quat="0.707107 0.707107 0 0">
+                            <inertial pos="0 0 0" quat="0.5 0.5 -0.5 0.5" mass="3.126" diaginertia="0.00879187 0.00814713 0.00814713" />
+                            <joint name="left_wrist_2_joint" pos="0 0 0" axis="0 0 1" limited="true" range="-6.28319 6.28319" />
+                            <geom pos="0 0 -0.0749" type="mesh" rgba="0.7 0.7 0.7 1" mesh="wrist2" />
+                            <body name="left_wrist_3_link" pos="0 0.1543 -3.16475e-11" quat="0.707107 -0.707107 0 0">
+                                <inertial pos="0.0280045 -0.186789 0.127233" quat="0.752332 0.649403 0.0286293 0.107015" mass="12.7183" diaginertia="0.445333 0.396893 0.0808376" />
+                                <joint name="left_wrist_3_joint" pos="0 0 0" axis="0 0 1" limited="true" range="-6.28319 6.28319" />
+                                <geom pos="0 0 -0.07" quat="0.707107 0.707107 0 0" type="mesh" rgba="0.7 0.7 0.7 1" mesh="wrist3" />
+                                <geom type="mesh" rgba="0.2 0.2 0.2 1"  mesh="extender" />
+                                <geom pos="0 -0.04436 0.18" quat="0 0 -0.707107 0.707107" type="mesh" mesh="rotary" />
+                                <geom pos="0 -0.18016 0.18" quat="-0.707107 -0.707107 0 0" type="mesh" mesh="bracket_gripper" />
+                                <geom pos="0 -0.18016 0.18" quat="-0.707107 -0.707107 0 0" type="mesh" name="left_harmon_bracket" mesh="harmon_bracket" />
+                                <geom pos="0.1344 -0.37976 0.098275" quat="-0.5 0.5 0.5 -0.5" type="mesh" name="left_bolt0" mesh="bolt" />
+                                <geom pos="0.1344 -0.55756 0.098275" quat="-0.5 0.5 0.5 -0.5" type="mesh" name="left_bolt1" mesh="bolt" />
+                                <geom size="0.035 0.025" pos="0 -0.08 -0.025" type="cylinder" rgba="0.2 0.2 0.2 1" />
+                            </body>
+                        </body>
+                    </body>
+                </body>
+            </body>
+        </body>
+    </worldbody>
+    <include file="actuator.xml"/>
+</mujoco>
